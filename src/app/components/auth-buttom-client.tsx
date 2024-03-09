@@ -2,8 +2,10 @@
 
 import { type Session, createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { Button } from '@nextui-org/button';
 
-export function AuthButtom({ session }: { session: Session | null }) {
+
+export function AuthButtomClient({ session }: { session: Session | null }) {
 
     const supabase = createClientComponentClient();
     const router = useRouter();
@@ -34,7 +36,7 @@ export function AuthButtom({ session }: { session: Session | null }) {
                         Sign in with Github
                     </button>
 
-                ) : <button onClick={handleSignOut}>Sign Out</button>
+                ) : <Button onClick={handleSignOut}>Sign Out</Button>
             }
 
         </header>
