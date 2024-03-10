@@ -4,9 +4,10 @@ import { cookies } from "next/headers";
 import { AuthButtomServer } from "./components/auth-buttom-server";
 import { redirect } from "next/navigation";
 import { PostsList } from "./components/posts-list";
+import { Database } from "./types/database";
 
 export default async function Home() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: { session } } = await supabase.auth.getSession();
   if (session === null) {
