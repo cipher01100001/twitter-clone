@@ -16,16 +16,24 @@ export function PostsList({ posts }: { posts: Post[] | null }) {
                         user_name: userName,
                         name: userFullName,
                         avatar_url: avatarUrl,
-                    } = user;
+                    } = user || {
+                        user_name: '',
+                        name: '',
+                        avatar_url: '',
+                    };
 
                     return (
-                        <PostCard
-                            content={content}
-                            key={id}
-                            userName={userName}
-                            userFullName={userFullName}
-                            avatarUrl={avatarUrl}
-                        />
+                        user ? (
+                            <PostCard
+                                content={content}
+                                key={id}
+                                userName={userName}
+                                userFullName={userFullName}
+                                avatarUrl={avatarUrl}
+                            />
+                        ) : (
+                            <p>This post is no longer available because the user has been deleted.</p>
+                        )
                     )
                 })
             }
